@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("Matches")
@@ -17,14 +18,14 @@ public class Match {
     @NotEmpty private Integer countOfPlayers;
     private String location;
     private Integer price;
-    @NotEmpty private List<String> planners;
-    private List<String> players;
+    @DBRef @NotEmpty private List<User> planners;
+    @DBRef private List<User> players;
 
 
 
     public Match() {}
 
-    public Match(String notes, String title, LocalDateTime startedOn, LocalDateTime completedOn, Integer countOfPlayers, String location, Integer price, List<String> planners, List<String> players) {
+    public Match(String notes, String title, LocalDateTime startedOn, LocalDateTime completedOn, Integer countOfPlayers, String location, Integer price, List<User> planners, List<User> players) {
         this.notes = notes;
         this.title = title;
         this.startedOn = startedOn;
@@ -72,11 +73,11 @@ public class Match {
         return price;
     }
 
-    public @NotEmpty List<String> getPlanners() {
+    public  List<User> getPlanners() {
         return planners;
     }
 
-    public List<String> getPlayers() {
+    public List<User> getPlayers() {
         return players;
     }
 

@@ -1,7 +1,7 @@
 package dev.soccergameplan.soccergame;
 
-import dev.soccergameplan.soccergame.dto.Match;
 import dev.soccergameplan.soccergame.repository.MatchRepository;
+import dev.soccergameplan.soccergame.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.util.List;
+
 
 @SpringBootApplication
 @EnableMongoRepositories
@@ -27,14 +27,29 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner runner(MatchRepository matchRepository) {
+    CommandLineRunner runner(MatchRepository matchRepository, UserRepository userRepository) {
         return args -> {
-            log.info("Sample matches added to the database.");
+
+//            List<User> users = MockUsers.users;
+//            List<Match> matches = MockMatches.matches;
+//            userRepository.saveAll(users);
+
+//            matchRepository.saveAll(matches);
+
+       /*     List<User> users = userRepository.findAll();
+
+            List<Match> matches = MockMatches.matches(users, users);
+            matchRepository.saveAll(matches);
+            log.info("Sample matches added to the database.");*/
 
 
-            List<Match> matches = matchRepository.findAll();
-            System.out.println(matches);
 
+
+//            List<Match> matches = matchRepository.findAll();
+//            System.out.println(matches);
+
+
+            log.info("DataBase is ready!!!!!!!!!");
         };
     }
 

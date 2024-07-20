@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/matches")
+@RequestMapping("/match")
 public class MatchController {
 
     @Autowired
     private MatchService matchService;
 
-    @GetMapping("/allMatch")
+    @GetMapping("/all")
     public List<Match> getAllMatches() {
         return matchService.getAllMatches();
     }
